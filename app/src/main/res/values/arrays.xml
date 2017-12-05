@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="countrycode">
+        <item>+65 </item>
+        <item>+60 </item>
+        <item>+66 </item>
+        <item>+86 </item>
+    </string-array>
+    <string-array name="permission_alert_info">
+        <item>@string/permission_read_phone_hint</item>
+        <item>@string/permission_access_fine_location_hint</item>
+        <item>@string/permission_access_coarse_location_hint</item>
+        <item>@string/permission_read_external_hint</item>
+        <item>@string/permission_white_external_hint</item>
+        <item>@string/permission_read_contacts_hint</item>
+    </string-array>
+</resources>
