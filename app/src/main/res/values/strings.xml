@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FingerPrintChecker</string>
+    <string name="app_name">FingerChecker</string>
 
     <string name="permission_read_phone_hint">Please open the permission PERMISSION_READ_PHONE_STATE to us.Otherwise, the app may not work properly</string>
     <string name="permission_access_fine_location_hint">Please open the permission PERMISSION_ACCESS_FINE_LOCATION to us.Otherwise, the app may not work properly</string>
@@ -8,4 +8,7 @@
     <string name="permission_white_external_hint">Please open the permission PERMISSION_WRITE_EXTERNAL_STORAGE to us.Otherwise, the app may not work properly</string>
     <string name="permission_read_contacts_hint">NETS CASH will have access to your address book.</string>
 
+    <string name="btn_str_fingerprint_environment_check">指纹模块检测</string>
+    <string name="btn_str_record_fingerprint">录入指纹</string>
+    <string name="btn_str_verify_fingerprint">检验指纹</string>
 </resources>

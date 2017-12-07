@@ -34,10 +34,10 @@ public class FingerprintHelper {
     public final static int FINGERPRINT_UNAVAILABLE = 0;
     public final static int FINGERPRINT_AVAILABLE = 1;
 
-    private static int mCurrentKeyProperties;
-    private static String mCurrentKeyName;
-    private static String mCurrentFingerToken;
-    private static String mCurrentIV;
+    private int mCurrentKeyProperties;
+    private String mCurrentKeyName;
+    private String mCurrentFingerToken;
+    private String mCurrentIV;
     private int mFingerPrintSupportStatus = FINGERPRINT_UNSUPPORT;
 
     private FingerprintHelper(Context context) {
@@ -90,7 +90,7 @@ public class FingerprintHelper {
     /**
      * Supply to set the fingerprint check before using the card
      *
-     * @param keyName HCECardId
+     * @param keyName keyName
      * @param purpose FingerprintHelper.APPLY or FingerprintHelper.VERIFY
      * @param IV IV cant not be empty when purpose equals to VERIFY.
      * @return
@@ -151,11 +151,12 @@ public class FingerprintHelper {
                             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                                 cipher = result.getCryptoObject().getCipher();
                             }
+                            // 指纹认证过程
                             if (mCurrentKeyProperties == KeyProperties.PURPOSE_DECRYPT) {
                                 // 取出secret key并返回
                                 if (TextUtils.isEmpty(mCurrentKeyName)) {
                                     mCallback.onAuthenticationFail(
-                                            "Authentication is available");
+                                            "Authentication is unavailable");
                                     return;
                                 }
                                 try {
@@ -182,7 +183,7 @@ public class FingerprintHelper {
                                     mCallback.onAuthenticationFail(
                                             "Authentication exception");
                                 }
-                            } else if (mCurrentKeyProperties == KeyProperties.PURPOSE_ENCRYPT) {
+                            } else if (mCurrentKeyProperties == KeyProperties.PURPOSE_ENCRYPT) {// 指纹录入过程
                                 // 将前面生成的data包装成secret key，存入沙盒
                                 try {
                                     byte[] encrypted = cipher.doFinal(mContext
